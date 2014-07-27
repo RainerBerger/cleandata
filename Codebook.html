@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Code book for Getting and Cleaning Data Course Project</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h1>Code book for Getting and Cleaning Data Course Project</h1>
+
+<h3>Sections of this code book:</h3>
+
+<ol>
+<li>Data Dictionary for Source Data (UCI HAR Dataset)<br/></li>
+<li>Data Dictionary for tidy Data (tidy_data.txt)<br/></li>
+<li>Variables used in <code>run_analysis.R</code> script</li>
+</ol>
+
+<h4>Structure of Source Data</h4>
+
+<p>Data was downloaded from: <a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a></p>
+
+<pre><code>UCI HAR Dataset/  
+        activity_labels.txt  
+        features_info.txt  
+        features.txt  
+        README.txt  
+        test/  
+            subject_test.txt  
+            X_test.txt  
+            y_test.txt  
+            Inertial Signals/  
+        train/  
+            subject_train.txt  
+            X_train.txt  
+            y_train.txt  
+            Inertial Signals/  
+</code></pre>
+
+<p>The &#39;Inertial Signals&#39; subdirectories of test/ and train/ are not used for this project.</p>
+
+<p>The files that are used are the following:</p>
+
+<p><code>activity_labels.txt</code>: Links the class labels with their activity name.<br/>
+<code>features.txt</code>: List of all features.<br/>
+<code>train/subject_train.txt</code>: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.<br/>
+<code>train/X_train.txt</code>: Training set.<br/>
+<code>train/y_train.txt</code>: Training labels.<br/>
+<code>test/subject_train.txt</code>: Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30.<br/>
+<code>test/X_test.txt</code>: Test set.<br/>
+<code>test/y_test.txt</code>: Test labels.  </p>
+
+<p>The structures of the training and testing data is the same.</p>
+
+<h3>Data Dictionary for Tidy Data</h3>
+
+<p>The tidy data is a comma-separated file with a header row. </p>
+
+<p>For each row, columns 1 and 2 contain the subject and activity.</p>
+
+<p>The remaining columns contain the means of all the observed measurements for each variable for that subject &amp; activity.The list of obsevered measurements is shown below.</p>
+
+<p><code>tBodyAcc_mean_X</code><br/>
+<code>tBodyAcc_mean_Y</code><br/>
+<code>tBodyAcc_mean_Z</code><br/>
+<code>tBodyAcc_std_X</code><br/>
+<code>tBodyAcc_std_Y</code><br/>
+<code>tBodyAcc_std_Z</code><br/>
+<code>tGravityAcc_mean_X</code><br/>
+<code>tGravityAcc_mean_Y</code><br/>
+<code>tGravityAcc_mean_Z</code><br/>
+<code>tGravityAcc_std_X</code><br/>
+<code>tGravityAcc_std_Y</code><br/>
+<code>tGravityAcc_std_Z</code><br/>
+<code>tBodyAccJerk_mean_X</code><br/>
+<code>tBodyAccJerk_mean_Y</code><br/>
+<code>tBodyAccJerk_mean_Z</code><br/>
+<code>tBodyAccJerk_std_X</code><br/>
+<code>tBodyAccJerk_std_Y</code><br/>
+<code>tBodyAccJerk_std_Z</code><br/>
+<code>tBodyGyro_mean_X</code><br/>
+<code>tBodyGyro_mean_Y</code><br/>
+<code>tBodyGyro_mean_Z</code><br/>
+<code>tBodyGyro_std_X</code><br/>
+<code>tBodyGyro_std_Y</code><br/>
+<code>tBodyGyro_std_Z</code><br/>
+<code>tBodyGyroJerk_mean_X</code><br/>
+<code>tBodyGyroJerk_mean_Y</code><br/>
+<code>tBodyGyroJerk_mean_Z</code><br/>
+<code>tBodyGyroJerk_std_X</code><br/>
+<code>tBodyGyroJerk_std_Y</code><br/>
+<code>tBodyGyroJerk_std_Z</code><br/>
+<code>tBodyAccMag_mean</code><br/>
+<code>tBodyAccMag_std</code><br/>
+<code>tGravityAccMag_mean</code><br/>
+<code>tGravityAccMag_std</code><br/>
+<code>tBodyAccJerkMag_mean</code><br/>
+<code>tBodyAccJerkMag_std</code><br/>
+<code>tBodyGyroMag_mean</code><br/>
+<code>tBodyGyroMag_std</code><br/>
+<code>tBodyGyroJerkMag_mean</code><br/>
+<code>tBodyGyroJerkMag_std</code><br/>
+<code>fBodyAcc_mean_X</code><br/>
+<code>fBodyAcc_mean_Y</code><br/>
+<code>fBodyAcc_mean_Z</code><br/>
+<code>fBodyAcc_std_X</code><br/>
+<code>fBodyAcc_std_Y</code><br/>
+<code>fBodyAcc_std_Z</code><br/>
+<code>fBodyAccJerk_mean_X</code><br/>
+<code>fBodyAccJerk_mean_Y</code><br/>
+<code>fBodyAccJerk_mean_Z</code><br/>
+<code>fBodyAccJerk_std_X</code><br/>
+<code>fBodyAccJerk_std_Y</code><br/>
+<code>fBodyAccJerk_std_Z</code><br/>
+<code>fBodyGyro_mean_X</code><br/>
+<code>fBodyGyro_mean_Y</code><br/>
+<code>fBodyGyro_mean_Z</code><br/>
+<code>fBodyGyro_std_X</code><br/>
+<code>fBodyGyro_std_Y</code><br/>
+<code>fBodyGyro_std_Z</code><br/>
+<code>fBodyAccMag_mean</code><br/>
+<code>fBodyAccMag_std</code><br/>
+<code>fBodyBodyAccJerkMag_mean</code><br/>
+<code>fBodyBodyAccJerkMag_std</code><br/>
+<code>fBodyBodyGyroMag_mean</code><br/>
+<code>fBodyBodyGyroMag_std</code><br/>
+<code>fBodyBodyGyroJerkMag_mean</code><br/>
+<code>fBodyBodyGyroJerkMag_std</code> </p>
+
+<h3>Variables used in the <code>run_analysis.R</code> script</h3>
+
+<p>This section describes some of the important variables used in the script.</p>
+
+<p><code>data_folder</code> - name of subdirectory in which UCI HAR Dataset files are stored<br/>
+<code>activity_labels</code> - activity labels, table read from <code>activity_labels.txt</code> file<br/>
+<code>feature_labels</code> - feature names, table read from <code>features.txt</code> file<br/>
+<code>train_subject</code> - subject IDs, training data set, table read from <code>train/subject_train.txt</code> file<br/>
+<code>train_y</code> - activity, training data set, table read from <code>train/y_train.txt</code> file<br/>
+<code>train</code> - assembled training data set<br/>
+<code>train_x</code> - measurement data, training data set, table read from <code>train/X_train.txt</code> file<br/>
+<code>test_subject</code> - subject IDs, testing data set, table read from <code>test/subject_test.txt</code> file<br/>
+<code>test_y</code> - activity, testing data set, table read from <code>test/y_test.txt</code> file<br/>
+<code>test_x</code> - measurement data, testing data set, table read from <code>test/X_test.txt</code> file<br/>
+<code>test</code> - assembled testing data set<br/>
+<code>combined</code> - combined training &amp; testing data set<br/>
+<code>filter</code> - logical filter selecting columns with &ldquo;mean&rdquo; or &ldquo;std&rdquo; in their header<br/>
+<code>combined_tidy</code> - downselected training &amp; testing data set, filtered using <code>filter</code> (see above)<br/>
+<code>reshaped</code> - recast dataframe, by subject + activity, function = mean</p>
+
+<h3>References</h3>
+
+<h4>Source Data Set Authors</h4>
+
+<blockquote>
+<p>Human Activity Recognition Using Smartphones Dataset<br/>
+Version 1.0<br/>
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.<br/>
+Smartlab - Non Linear Complex Systems Laboratory<br/>
+DITEN - Universit? degli Studi di Genova.<br/>
+Via Opera Pia 11A, I-16145, Genoa, Italy.<br/>
+<a href="mailto:activityrecognition@smartlab.ws">activityrecognition@smartlab.ws</a><br/>
+<a href="http://www.smartlab.ws">www.smartlab.ws</a></p>
+</blockquote>
+
+</body>
+
+</html>
+

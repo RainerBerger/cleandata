@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Course Project for Getting and Cleaning Data</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+
+
+
+
+</head>
+
+<body>
+<h2>Course Project for Getting and Cleaning Data</h2>
+
+<p>This project deals with data related to wearable computing. Specifically, the data used was collected from the accelerometers from a Samsung Galaxy S smartphone. A full description is available at the site where the data was obtained: </p>
+
+<p><a href="http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones">http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones</a> </p>
+
+<p>The data files were obtained from the following link:</p>
+
+<p><a href="https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip">https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip</a> </p>
+
+<p>The project involves converted the source data from the above link to a tidy data set.</p>
+
+<h3>Description of Files</h3>
+
+<p>This repository contains the following files:</p>
+
+<ul>
+<li><code>run_analysis.R</code> - R script containing the steps for cleaning the data</li>
+<li><code>submission_data.txt</code> - the Tidy data set produced from running the cleaning script</li>
+<li><code>Codebook.md</code> - The code book for the source and summarized data sets</li>
+<li><code>README.md</code> - This readme file</li>
+</ul>
+
+<h3>Data Cleansing steps in run_analysis.R script:</h3>
+
+<p>The data cleansing is split into 3 stages:  </p>
+
+<h4>Stage 1</h4>
+
+<p>The first stage involves reading the training and the testing data and combining them to create a single data set.</p>
+
+<p>We Use descriptive activity names to name the activities in the data set.
+The descriptive activity names are read from <code>activity_labels.txt</code>.
+The descriptive feature names are read, as character, from <code>feature.txt</code>.</p>
+
+<p>The train and test data sets are each broken into three files&ndash;one each for subject, y and x where subject is the test subject ID, y is the activity label and x are the measurements for each feature.</p>
+
+<h4>Stage 2</h4>
+
+<p>We want to extract only the measurements on the mean and standard deviation for each measurement.</p>
+
+<p>A logical filter, <code>filter</code>, is created using <code>grepl()</code> to search the names vector for names including the text &ldquo;mean&rdquo; or &ldquo;std&rdquo;.  </p>
+
+<h4>Stage 3</h4>
+
+<p>This stage involves creating a tidy data set with the mean of each variable
+for each activity and subject.</p>
+
+<p>The <code>tidied</code> data frame is written to a text file <code>tidy_data.txt</code> for further analysis.  </p>
+
+</body>
+
+</html>
+
