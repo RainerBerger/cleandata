@@ -30,7 +30,7 @@ train_subject <- read.table(paste(data_folder, "train", "subject_train.txt", sep
 train_y <- read.table(paste(data_folder, "train", "y_train.txt", sep="/"), header=FALSE, 
                     colClasses="factor")
 
-train_x <- read.table(paste(data_folder, "train", "X_train.txt", sep="/"), col.names=features[,2], 
+train_x <- read.table(paste(data_folder, "train", "X_train.txt", sep="/"), col.names=feature_labels[,2], 
                       colClasses="numeric")
 
 ## Rename levels of train_y with descriptive labels
@@ -52,7 +52,7 @@ test_subject <- read.table(paste(data_folder, "test", "subject_test.txt", sep="/
 test_y <- read.table(paste(data_folder, "test", "y_test.txt", sep="/"), header=FALSE, 
                       colClasses="factor")
 
-test_x <- read.table(paste(data_folder, "test", "X_test.txt", sep="/"), col.names=features[,2], colClasses="numeric")
+test_x <- read.table(paste(data_folder, "test", "X_test.txt", sep="/"), col.names=feature_labels[,2], colClasses="numeric")
 
 ## Rename levels of test_y with descriptive labels
 levels(test_y[,1]) <- activity_labels[,2]
